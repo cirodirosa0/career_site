@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<!--Inherited from Base.html-->
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		{% block head %}
+		<title>{% block title %}Ciro Di Rosa{% endblock %}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="./static/assests/css/main.css" />
+		{% endblock %}
+	</head>
+	<body class="is-preload">
+
+	    <script>
+        function openPDF() {
+            window.open('./static/assests/Resume.pdf', '_blank');
+        }
+    	</script>
+
+		<!-- Header -->
+			<header id="header">
+				{% block header %}
+				<div class="inner">
+					<a href="#" class="image avatar"><img src="./static/images/avatar.jpg" alt="" /></a>
+					<h1><strong>Ciro Di Rosa</strong>,<br />
+						Experienced Business Process Analyst,<br />
+						Data Management<br />
+					</h1>
+				</div>
+				{% endblock %}
+			</header>
+
+
+		<!-- Main -->
+			<div id="main">
+				{% block section_one %}
+				<!-- One -->
+					<section id="one">
+						<header class="major">
+							<h2>Ipsum lorem dolor aliquam ante commodo<br />
+							magna sed accumsan arcu neque.</h2>
+						</header>
+						<p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p>
+						<ul class="actions">
+							<li><a onclick="openPDF()" class="button">Resume</a></li>
+						</ul>
+
+					</section>
+				{% endblock %}
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				{% block footer %}
+				<div class="inner">
+					<ul class="copyright" style="text-align: center">
+						<li>Ciro Di Rosa</li>
+						<li>All rights reserved and Design:</li>
+						<li><a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+					<ul class="copyright" style="text-align: center">
+						<li>Photo by <a href="https://unsplash.com/@purzlbaum?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Claudio Schwarz</a> on <a href="https://unsplash.com/photos/an-aerial-view-of-a-snow-covered-mountain-range-1UReRFn0xNk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></li>
+					</ul>
+				</div>
+				{% endblock %}
+			</footer>
+
+		<!-- Scripts -->
+		{% block script %}
+			<script src="./static/assests/js/jquery.min.js"></script>
+			<script src="./static/assests/js/jquery.poptrox.min.js"></script>
+			<script src="./static/assests/js/browser.min.js"></script>
+			<script src="./static/assests/js/breakpoints.min.js"></script>
+			<script src="./static/assests/js/util.js"></script>
+			<script src="./static/assests/js/main.js"></script>
+		{% endblock %}
+	</body>
+</html>

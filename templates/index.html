@@ -13,14 +13,24 @@
 	</head>
 	<body class="is-preload">
 
-        <audio id="audio1" style="display: none;" controls>
+        <audio id="audio0" style="display: none;" controls>
           <source src="./static/assets/Hope.mp3" type="audio/mpeg">
         </audio>
-
+        <audio id="audio1" style="display: none;" controls>
+          <source src="" type="audio/mpeg">
+        </audio>
         <audio id="audio2" style="display: none;" controls>
           <source src="" type="audio/mpeg">
         </audio>
-
+        <audio id="audio3" style="display: none;" controls>
+          <source src="" type="audio/mpeg">
+        </audio>
+        <audio id="audio4" style="display: none;" controls>
+          <source src="" type="audio/mpeg">
+        </audio>
+        <audio id="audio5" style="display: none;" controls>
+          <source src="" type="audio/mpeg">
+        </audio>
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
@@ -64,12 +74,12 @@
 						<h2>Recent Work</h2>
 						<div class="row">
 							<article class="col-6 col-12-xsmall work-item">
-								<a otherlink="index.html" class="image fit thumb"><img src="./static/images/thumbs/01.jpg" alt="" /></a>
+								<a condensed_link="index.html" class="image fit thumb"><img src="./static/images/thumbs/01.jpg" alt="" /></a>
 								<h3>Magna sed consequat tempus</h3>
 								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a otherlink="learn_more.html" class="image fit thumb"><img src="./static/images/thumbs/02.jpg" alt="" /></a>
+								<a condensed_link="learn_more.html" class="image fit thumb"><img src="./static/images/thumbs/02.jpg" alt="" /></a>
 								<h3>Ultricies lacinia interdum</h3>
 								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
 							</article>
@@ -162,57 +172,35 @@
 			<script src="./static/assets/js/main.js"></script>
 
 			<script>
-                window.addEventListener('popstate', function(event) {
-                    // Your action here
-                    console.log('Back button clicked');
-                    // For example, you can navigate to a different URL
-                    // window.location.href = 'new_page.html';
-                });
+				var prev_index = 1
 				document.addEventListener("DOMContentLoaded", function() {
 					var currentPopup = null; // Variable to keep track of the currently open popup window
-					// Select all elements with the class "work-item"
 					var workItems = document.querySelectorAll('.work-item');
 
-					// Iterate over each work item
-					workItems.forEach(function(workItem) {
-						// Get the link within each work item
+					workItems.forEach(function(workItem,index) {
 						var workItemLink = workItem.querySelector('a');
 
-						// Add a mouseover event listener to each work item link
 						workItemLink.addEventListener("click", function(event) {
-							event.preventDefault(); // Prevent default link behavior
+							event.preventDefault();
+							var targetPageURL = workItemLink.getAttribute('condensed_link');
 
-							// Get the href attribute of the hovered link (the target URL)
-							var targetPageURL = workItemLink.getAttribute('otherlink');
-
-							if (targetPageURL == "index.html") {
-    							var audio = document.getElementById('audio1');
+								var audio = document.getElementById('audio'+prev_index);
     							audio.currentTime = 0
-							} else {
-							    var audio = document.getElementById('audio1');
-                                audio.pause();
-							    var audio = document.getElementById('audio2');
-							}
+    							audio.pause();
+							    var audio = document.getElementById('audio'+index);
+								audio.volume = 0.2;
+								audio.pause();
+								audio.play();
 
-
-						    audio.volume = 0.2;
-                            audio.pause();
-                            audio.play();
-
-							// Close the currently open popup, if any
 							if (currentPopup && !currentPopup.closed) {
 								currentPopup.close();
 							}
 
-							// Define the properties of the popup window
-							var popupProperties = "width=600,height=400,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no";
+							var popupProperties = "width=600,height=400,toolbar=no,location=no,directories=no,status=no,menubar=no,resizable=no,titlebar=no";
 
-							// Open the content of the target webpage in a popup window
 							currentPopup = window.open(targetPageURL, "_blank", popupProperties);
 
-							// Add a mouseout event listener to the popup window
 							currentPopup.addEventListener("mouseout", function(event) {
-								// Check if the mouse is outside the popup window
 								if (event.relatedTarget === null) {
 								    audio.pause()
 									currentPopup.close();

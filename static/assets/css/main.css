@@ -3219,3 +3219,14 @@ input, select, textarea {
 			}
 
 	}
+
+    #container_test {
+        text-align: center; /* Center horizontally */
+        display: flex; /* Enable flexbox */
+        align-items: center; /* Center vertically */
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+    #content_test {
+        margin-top: 20px; /* Adjust top margin if needed */
+    }

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Ciro Di Rosa</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="./static/assets/css/main.css" />
+	</head>
+	<body class="is-preload" style="background-color:lightgrey">
+
+        <audio id="audio0" style="display: none;" controls>
+          <source src="./static/assets/Hope.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio1" style="display: none;" controls>
+          <source src="" type="audio/mpeg">
+        </audio>
+        <audio id="audio2" style="display: none;" controls>
+          <source src="" type="audio/mpeg">
+        </audio>
+        <audio id="audio3" style="display: none;" controls>
+          <source src="" type="audio/mpeg">
+        </audio>
+        <audio id="audio4" style="display: none;" controls>
+          <source src="" type="audio/mpeg">
+        </audio>
+        <audio id="audio5" style="display: none;" controls>
+          <source src="" type="audio/mpeg">
+        </audio>
+
+        <div id="container_test">
+            <h1>Dynamic Plot with Slider</h1>
+            <div id="content_test">
+                <input type="range" min="0" max="1" step="0.05" value="0.1" id="thresholdSlider" onchange="handleSliderChange()">
+                <span id="thresholdValue">0.1</span>
+                <img id="plot" src="/plot.png?threshold=0.5" alt="Plot">
+            </div>
+        </div>
+
+		<!-- Scripts -->
+			<script src="./static/assets/js/jquery.min.js"></script>
+			<script src="./static/assets/js/jquery.poptrox.min.js"></script>
+			<script src="./static/assets/js/browser.min.js"></script>
+			<script src="./static/assets/js/breakpoints.min.js"></script>
+			<script src="./static/assets/js/util.js"></script>
+			<script src="./static/assets/js/main.js"></script>
+
+        <script>
+        // Function to handle slider change event
+        function updateSliderValue() {
+            var slider = document.getElementById('thresholdSlider');
+            var span = document.getElementById('thresholdValue');
+            span.textContent = slider.value;
+        }
+
+        function handleSliderChange() {
+            var threshold = document.getElementById('thresholdSlider').value;
+
+            updateSliderValue()
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/update_plot?threshold=' + threshold, true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Update plot image
+                    document.getElementById('plot').src = '/plot.png?threshold=' + threshold;
+                }
+            };
+            xhr.send();
+        }
+        </script>
+	</body>
+</html>
